@@ -1,0 +1,36 @@
+!.mvn/wrapper/maven-wrapper.jar
+
+/logs/
+/target/
+dump.rdb
+/src/main/resources/apiclient_cert.p12
+/src/main/resources/apiclient_cert.pem
+/src/main/resources/apiclient_key.pem
+
+/src/main/docker/Dockerfile
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+*.properties

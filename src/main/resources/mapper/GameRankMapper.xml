@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.custom.dao.common.GameRankDao" >
+
+    <insert id="addNewRankItem">
+        insert into game_rank (uid, type, score, nickname, avatar) values (#{uid}, #{gameType}, #{score}, #{nickname}, #{avatar})
+    </insert>
+    <!-- TODO 语句效率存疑   -->
+    <update id="updateRankScore">
+        update game_rank set score = #{score} where uid = #{uid} and type = #{gameType} and score &lt; #{score}
+    </update>
+
+    <select id="findRankByType" resultType="com.custom.entity.common.RankEntity">
+        select score, nickname, avatar from game_rank where type = #{param1} order by score desc limit #{param2}, ${param3}
+    </select>
+
+    <select id="findAllRankByType" resultType="com.custom.entity.common.RankEntity">
+        select score, nickname, avatar, uid from game_rank where type = #{param1} order by score desc
+    </select>
+
+    <select id="findRankByTypeTop100" resultType="com.custom.entity.common.RankEntity">
+        select score, nickname, avatar, uid from game_rank where type = #{param1} order by score desc limit 0, 100
+    </select>
+
+    <select id="findUserRank" resultType="com.custom.entity.common.RankEntity">
+        select type, score from game_rank where uid = #{uid}
+    </select>
+</mapper>

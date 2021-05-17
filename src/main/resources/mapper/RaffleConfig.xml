@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.custom.dao.common.RaffleDao" >
+
+    <sql id="BaseColumnList" >
+        id,activity_id,raffle_times,raffle_times_type,must_hit
+    </sql>
+
+    <select id="findByActivityId" resultType="com.custom.entity.common.raffle.RaffleConfigEntity" parameterType="com.custom.entity.common.raffle.RaffleConfigEntity">
+        select
+        <include refid="BaseColumnList"></include>
+        from raffle_config
+        where activity_id = #{activityId}
+    </select>
+
+
+    <select id="queryById" resultType="com.custom.entity.common.raffle.RaffleConfigEntity" parameterType="com.custom.entity.common.raffle.RaffleConfigEntity">
+        select
+        <include refid="BaseColumnList"></include>
+        from raffle_config
+        where activity_id = #{activityId}
+    </select>
+
+    <insert id="addAutoStock" parameterType="com.custom.entity.common.raffle.AutoStockEntity">
+        insert into raffle_auto_stock
+        (activity_id,gift_id,add_stock)
+        values
+        (#{activityId},#{giftId},#{addStock})
+    </insert>
+
+</mapper>

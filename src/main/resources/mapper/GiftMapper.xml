@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.custom.dao.common.GiftDao" >
+
+    <sql id="BaseColumnList" >
+        id,activity_id,stock_all,send,
+        stock_now,stock_online_everyday,probability,name,hit_limit_num,
+        img
+    </sql>
+
+    <update id="increaseStockNow">
+        update raffle_config_gift
+        set stock_now = stock_now + #{param2}
+        where id = #{param1.id}
+    </update>
+
+
+    <select id="queryCanRaffle" parameterType="com.custom.entity.common.raffle.RaffleGiftEntity" resultType="com.custom.entity.common.raffle.RaffleGiftEntity">
+        select
+        <include refid="BaseColumnList"></include>
+        from raffle_config_gift
+        where activity_id = #{activityId}
+    </select>
+
+    <update id="increaseStock" parameterType="com.custom.entity.common.raffle.RaffleGiftEntity">
+        update raffle_config_gift
+        set send = send + 1
+        where id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.custom.dao.common.IllegalRequestDao" >
+
+    <insert id="add">
+        insert into log_illegal_request (uid, api, ip, error_code, error_msg) values (#{uid}, #{api}, #{ip}, #{errorCode}, #{errorMsg})
+    </insert>
+</mapper>
